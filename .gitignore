@@ -1,0 +1,8 @@
+# Cache objects
+packer_cache/
+
+# For built boxes
+*.box
+box/
+
+.DS_Store
