@@ -98,6 +98,7 @@
         "iso_checksum": "73ae6579ef7c51d944a0be5c4c48f748bfd689df",
         "iso_checksum_type": "sha1",
         "iso_name": "ubuntu-18.04-server-amd64.iso",
+        "iso_path": "iso",
         "iso_url": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04-server-amd64.iso",
         "memory": "1024",
         "no_proxy": "{{env `no_proxy`}}",
