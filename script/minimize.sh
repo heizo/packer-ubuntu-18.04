@@ -12,7 +12,6 @@ dpkg --get-selections | grep -v deinstall
 
 # Remove some packages to get a minimal install
 echo "==> Removing all linux kernels except the currrent one"
-#dpkg --list | awk '{ print $2 }' | grep 'linux-image-3.*-generic' | grep -v $(uname -r) | xargs apt-get -y purge
 apt-get -y purge `ls /boot/vmlinuz-* | sed -e '$d' | sed s/.*vmlinuz/linux-image/`
 apt-get -y purge $(dpkg --list |egrep 'linux-image-[0-9]' |awk '{print $3,$2}' |sort -nr |tail -n +2 |grep -v $(uname -r) |awk '{ print $2}')
 apt-get -y purge $(dpkg --list |grep '^rc' |awk '{print $2}')
@@ -26,10 +25,6 @@ dpkg --list | awk '{ print $2 }' | grep -- '-doc$' | xargs apt-get -y purge
 #dpkg --list | grep -i compiler | awk '{ print $2 }' | xargs apt-get -y purge
 #apt-get -y purge cpp gcc g++
 #apt-get -y purge build-essential git
-#echo "==> Removing default system Ruby"
-#apt-get -y purge ruby ri doc
-#echo "==> Removing default system Python"
-#apt-get -y purge python-dbus libnl1 python-smartpm python-twisted-core libiw30 python-twisted-bin libdbus-glib-1-2 python-pexpect python-pycurl python-serial python-gobject python-pam python-openssl libffi5
 echo "==> Removing X11 libraries"
 apt-get -y purge libx11-data xauth libxmuu1 libxcb1 libx11-6 libxext6
 echo "==> Removing other oddities"
