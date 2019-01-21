@@ -1,8 +1,8 @@
 #!/bin/bash -eu
 
-# locale
+# Reduce installed languages to just "en_US.UTF-8"
 echo "==> Configuring locales"
-apt-get -y purge language-pack-en language-pack-gnome-en
+apt-get -y purge language-pack-en language-pack-gnome-en language-selector-common
 sed -i -e '/^[^# ]/s/^/# /' /etc/locale.gen
 LANG=en_US.UTF-8
 LC_ALL=$LANG
