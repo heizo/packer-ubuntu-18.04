@@ -11,7 +11,7 @@ update-locale LANG=$LANG LC_ALL=$LC_ALL
 
 # Disable the release upgrader
 echo "==> Disabling the release upgrader"
-sed -i.bak 's/^Prompt=.*$/Prompt=never/' /etc/update-manager/release-upgrades
+apt-get -y purge ubuntu-release-upgrader-core
 
 echo "==> Disabling apt.daily.service"
 systemctl stop apt-daily.timer
