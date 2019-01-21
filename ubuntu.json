@@ -66,7 +66,6 @@
     "provisioners": [{
         "environment_vars": [
             "DEBIAN_FRONTEND=noninteractive",
-            "DESKTOP={{user `desktop`}}",
             "UPDATE={{user `update`}}",
             "DISABLE_IPV6={{user `disable_ipv6`}}",
             "INSTALL_VAGRANT_KEY={{user `install_vagrant_key`}}",
@@ -92,7 +91,6 @@
         "boot_command_prefix": "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
         "cpus": "1",
         "disable_ipv6": "true",
-        "desktop": "false",
         "disk_size": "40960",
         "headless": "true",
         "http_proxy": "{{env `http_proxy`}}",
