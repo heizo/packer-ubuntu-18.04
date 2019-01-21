@@ -2,11 +2,6 @@
 
 SSH_USER=${SSH_USERNAME:-vagrant}
 
-echo "==> Cleaning up leftover dhcp leases"
-if [ -d "/var/lib/dhcp" ]; then
-    rm /var/lib/dhcp/*
-fi
-
 echo "==> Cleaning up tmp"
 rm -rf /tmp/*
 
