@@ -5,7 +5,7 @@
             "{{ user `boot_command_prefix` }}",
             "/install/vmlinuz noapic ",
             "initrd=/install/initrd.gz ",
-            "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+            "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `preseed`}} ",
             "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
             "hostname={{ user `hostname` }} ",
             "grub-installer/bootdev=/dev/sda<wait> ",
