@@ -13,10 +13,11 @@ update-locale LANG=$LANG LC_ALL=$LC_ALL
 echo "==> Disabling the release upgrader"
 sed -i.bak 's/^Prompt=.*$/Prompt=never/' /etc/update-manager/release-upgrades
 
-echo "==> Disabling apt.daily.service"
-systemctl stop apt-daily.timer
-systemctl disable apt-daily.timer
-systemctl mask apt-daily.service
+echo "==> Disabling apt.daily.service & apt-daily-upgrade.service"
+systemctl stop apt-daily.timer apt-daily-upgrade.timer
+systemctl mask apt-daily.timer apt-daily-upgrade.timer
+systemctl stop apt-daily.service apt-daily-upgrade.service
+systemctl mask apt-daily.service apt-daily-upgrade.service
 systemctl daemon-reload
 
 # install packages and upgrade
