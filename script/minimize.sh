@@ -1,5 +1,14 @@
 #!/bin/bash -eu
 
+# Reduce installed languages to just "en_US"
+echo "==> Configuring locales"
+apt-get -y purge language-pack-en language-pack-gnome-en language-selector-common
+sed -i -e '/^[^# ]/s/^/# /' /etc/locale.gen
+LANG=en_US.UTF-8
+LC_ALL=$LANG
+locale-gen --purge $LANG
+update-locale LANG=$LANG LC_ALL=$LC_ALL
+
 # Remove some packages to get a minimal install
 echo "==> Removing all linux kernels except the currrent one"
 apt-get -y purge `ls /boot/vmlinuz-* | sed -e '$d' | sed s/.*vmlinuz/linux-image/`
