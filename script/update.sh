@@ -2,7 +2,7 @@
 
 # Disable the release upgrader
 echo "==> Disabling the release upgrader"
-sed -i.bak 's/^Prompt=.*$/Prompt=never/' /etc/update-manager/release-upgrades
+sed -i 's/^Prompt=.*$/Prompt=never/' /etc/update-manager/release-upgrades
 
 echo "==> Disabling apt.daily.service & apt-daily-upgrade.service"
 systemctl stop apt-daily.timer apt-daily-upgrade.timer
