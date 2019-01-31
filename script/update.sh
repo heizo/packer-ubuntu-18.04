@@ -14,7 +14,7 @@ systemctl daemon-reload
 # install packages and upgrade
 echo "==> Updating list of repositories"
 apt-get -y update
-if [[ $UPDATE  =~ true || $UPDATE =~ 1 || $UPDATE =~ yes ]]; then
+if [[ $UPDATE =~ true || $UPDATE =~ 1 || $UPDATE =~ yes ]]; then
     apt-get -y dist-upgrade
 fi
 apt-get -y install build-essential linux-headers-generic
