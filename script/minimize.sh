@@ -2,8 +2,8 @@
 
 # Reduce installed languages to just "en_US"
 echo "==> Configuring locales"
-apt-get -y purge language-pack-en language-pack-gnome-en language-selector-common
-sed -i -e '/^[^# ]/s/^/# /' /etc/locale.gen
+apt-get -y purge language-pack-en language-pack-gnome-en
+sed -i '/^[^# ]/s/^/# /' /etc/locale.gen
 LANG=en_US.UTF-8
 LC_ALL=$LANG
 locale-gen --purge $LANG
@@ -25,9 +25,9 @@ dpkg --list | awk '{ print $2 }' | grep -- '-doc$' | xargs apt-get -y purge
 echo "==> Removing X11 libraries"
 apt-get -y purge libx11-data xauth libxmuu1 libxcb1 libx11-6 libxext6 libxau6 libxdmcp6
 echo "==> Removing other oddities"
-apt-get -y purge popularity-contest installation-report plymouth xdg-user-dirs
+apt-get -y purge popularity-contest installation-report plymouth xdg-user-dirs language-selector-common
 apt-get -y purge nano
-apt-get -y purge $(dpkg --list |grep '^rc' |awk '{print $2}')
+apt-get -y purge $(dpkg --list | grep '^rc' | awk '{print $2}')
 
 # Clean up orphaned packages with deborphan
 apt-get -y install deborphan
