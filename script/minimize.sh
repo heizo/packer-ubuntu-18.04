@@ -40,11 +40,11 @@ apt-get -y purge deborphan dialog
 apt-get -y autoremove --purge
 apt-get -y clean
 
-echo "==> Removing man pages"
-rm -rf /usr/share/man/*
+#echo "==> Removing man pages"
+#rm -rf /usr/share/man/*
 echo "==> Removing APT files"
 find /var/lib/apt -type f | xargs rm -f
-echo "==> Removing any docs"
-rm -rf /usr/share/doc/*
+#echo "==> Removing any docs"
+#rm -rf /usr/share/doc/*
 echo "==> Removing caches"
 find /var/cache -type f -exec rm -rf {} \;
