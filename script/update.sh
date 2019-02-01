@@ -1,9 +1,5 @@
 #!/bin/bash -eu
 
-# Disable the release upgrader
-echo "==> Disabling the release upgrader"
-sed -i 's/^Prompt=.*$/Prompt=never/' /etc/update-manager/release-upgrades
-
 echo "==> Disabling apt.daily.service & apt-daily-upgrade.service"
 systemctl stop apt-daily.timer apt-daily-upgrade.timer
 systemctl mask apt-daily.timer apt-daily-upgrade.timer
@@ -21,6 +17,10 @@ apt-get -y install build-essential linux-headers-generic
 apt-get -y install ssh nfs-common vim curl git
 apt-get -y autoremove --purge
 apt-get -y clean
+
+# Disable the release upgrader
+echo "==> Disabling the release upgrader"
+sed -i 's/^Prompt=.*$/Prompt=never/' /etc/update-manager/release-upgrades
 
 # Disable IPv6
 if [[ $DISABLE_IPV6 =~ true || $DISABLE_IPV6 =~ 1 || $DISABLE_IPV6 =~ yes ]]; then
