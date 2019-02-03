@@ -27,12 +27,12 @@ apt-get -y purge libx11-data xauth libxmuu1 libxcb1 libx11-6 libxext6 libxau6 li
 echo "==> Removing other oddities"
 apt-get -y purge popularity-contest installation-report plymouth xdg-user-dirs language-selector-common
 apt-get -y purge nano
-apt-get -y purge $(dpkg --list | grep '^rc' | awk '{print $2}')
 
 # Clean up orphaned packages with deborphan
 apt-get -y install deborphan
-while [ -n "$(deborphan --guess-all --libdevel)" ]; do
-    deborphan --guess-all --libdevel | xargs apt-get -y purge
+deborphan --find-config | xargs apt-get -y purge
+while [ -n "$(deborphan --guess-all)" ]; do
+    deborphan --guess-all | xargs apt-get -y purge
 done
 apt-get -y purge deborphan dialog
 
@@ -43,7 +43,7 @@ apt-get -y clean
 #echo "==> Removing man pages"
 #rm -rf /usr/share/man/*
 echo "==> Removing APT files"
-find /var/lib/apt -type f | xargs rm -f
+find /var/lib/apt -type f -exec rm -rf {} \;
 #echo "==> Removing any docs"
 #rm -rf /usr/share/doc/*
 echo "==> Removing caches"
