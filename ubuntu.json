@@ -41,18 +41,8 @@
             ["modifyvm", "{{.Name}}", "--usb", "off"],
             ["modifyvm", "{{.Name}}", "--vram", "12"],
             ["modifyvm", "{{.Name}}", "--vrde", "off"],
-            [
-                "modifyvm",
-                "{{.Name}}",
-                "--memory",
-                "{{ user `memory` }}"
-            ],
-            [
-                "modifyvm",
-                "{{.Name}}",
-                "--cpus",
-                "{{ user `cpus` }}"
-            ]
+            ["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
+            ["modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}"]
         ],
         "virtualbox_version_file": ".vbox_version",
         "vm_name": "{{user `vm_name`}}"
