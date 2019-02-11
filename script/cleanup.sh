@@ -12,8 +12,6 @@ apt-get -y clean
 echo "==> Installed packages"
 dpkg --get-selections | grep -v deinstall
 
-DISK_USAGE_BEFORE_CLEANUP=$(df -h)
-
 # Remove Bash history
 unset HISTFILE
 rm -f /root/.bash_history
@@ -48,9 +46,6 @@ fi
 dd if=/dev/zero of=/EMPTY bs=1M || echo "dd exit code $? is suppressed"
 rm -f /EMPTY
 sync
-
-echo "==> Disk usage before cleanup"
-echo "${DISK_USAGE_BEFORE_CLEANUP}"
 
 echo "==> Disk usage after cleanup"
 df -h
