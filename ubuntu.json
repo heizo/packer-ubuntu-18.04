@@ -2,38 +2,38 @@
     "_comment": "Build with `packer build ubuntu.json`",
     "builders": [{
         "boot_command": [
-            "{{ user `boot_command_prefix` }}",
+            "{{user `boot_command_prefix`}}",
             "/install/vmlinuz noapic ",
             "initrd=/install/initrd.gz ",
-            "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `preseed`}} ",
+            "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/{{user `preseed`}} ",
             "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-            "hostname={{ user `hostname` }} ",
+            "hostname={{user `hostname`}} ",
             "grub-installer/bootdev=/dev/sda<wait> ",
             "fb=false debconf/frontend=noninteractive ",
             "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
             "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
-            "passwd/user-fullname={{ user `ssh_fullname` }} ",
-            "passwd/user-password={{ user `ssh_password` }} ",
-            "passwd/user-password-again={{ user `ssh_password` }} ",
-            "passwd/username={{ user `ssh_username` }} ",
+            "passwd/user-fullname={{user `ssh_fullname`}} ",
+            "passwd/user-password={{user `ssh_password`}} ",
+            "passwd/user-password-again={{user `ssh_password`}} ",
+            "passwd/username={{user `ssh_username`}} ",
             "-- <enter>"
         ],
-        "disk_size": "{{ user `disk_size` }}",
+        "disk_size": "{{user `disk_size`}}",
         "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
-        "guest_os_type": "{{ user `virtualbox_guest_os_type` }}",
+        "guest_os_type": "{{user `virtualbox_guest_os_type`}}",
         "hard_drive_interface": "sata",
-        "headless": "{{ user `headless` }}",
+        "headless": "{{user `headless`}}",
         "http_directory": "http",
-        "iso_checksum": "{{ user `iso_checksum` }}",
-        "iso_checksum_type": "{{ user `iso_checksum_type` }}",
+        "iso_checksum": "{{user `iso_checksum`}}",
+        "iso_checksum_type": "{{user `iso_checksum_type`}}",
         "iso_urls": [
-            "{{ user `iso_path` }}/{{ user `iso_name` }}",
-            "{{ user `iso_url` }}"
+            "{{user `iso_path`}}/{{user `iso_name`}}",
+            "{{user `iso_url`}}"
         ],
-        "output_directory": "output-{{ user `vm_name` }}-virtualbox-iso",
-        "shutdown_command": "echo '{{ user `ssh_password` }}'|sudo -S shutdown -P now",
-        "ssh_password": "{{ user `ssh_password` }}",
-        "ssh_username": "{{ user `ssh_username` }}",
+        "output_directory": "output-{{user `vm_name`}}-virtualbox-iso",
+        "shutdown_command": "echo '{{user `ssh_password`}}'|sudo -S shutdown -P now",
+        "ssh_password": "{{user `ssh_password`}}",
+        "ssh_username": "{{user `ssh_username`}}",
         "ssh_wait_timeout": "10000s",
         "type": "virtualbox-iso",
         "vboxmanage": [
@@ -51,7 +51,7 @@
         "keep_input_artifact": false,
         "output": "box/{{.Provider}}/{{user `vm_name`}}-{{user `version`}}.box",
         "type": "vagrant",
-        "vagrantfile_template": "{{ user `vagrantfile_template` }}"
+        "vagrantfile_template": "{{user `vagrantfile_template`}}"
     }],
     "provisioners": [{
         "environment_vars": [
@@ -64,7 +64,7 @@
             "https_proxy={{user `https_proxy`}}",
             "no_proxy={{user `no_proxy`}}"
         ],
-        "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+        "execute_command": "echo '{{user `ssh_password`}}'|{{.Vars}} sudo -E -S bash '{{.Path}}'",
         "expect_disconnect": true,
         "scripts": [
             "script/update.sh",
