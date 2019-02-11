@@ -17,13 +17,8 @@ unset HISTFILE
 rm -f /root/.bash_history
 rm -f /home/${SSH_USER}/.bash_history
 
-# Clean up log files
-find /var/log -type f | while read f; do echo -ne '' > "${f}"; done;
-
-echo "==> Clearing last login information"
->/var/log/lastlog
->/var/log/wtmp
->/var/log/btmp
+echo "==> Clearing log files"
+find /var/log -type f -exec truncate --size=0 {} \;
 
 echo '==> Clear out swap and disable until reboot'
 set +e
