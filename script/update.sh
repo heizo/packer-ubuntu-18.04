@@ -13,8 +13,8 @@ apt-get -y update
 if [[ $UPDATE =~ true || $UPDATE =~ 1 || $UPDATE =~ yes ]]; then
     apt-get -y dist-upgrade
 fi
-apt-get -y install build-essential linux-headers-generic
-apt-get -y install ssh nfs-common vim curl git
+apt-get -y install --no-install-recommends build-essential linux-headers-generic
+apt-get -y install --no-install-recommends ssh nfs-common vim curl git
 
 # Disable the release upgrader
 #echo "==> Disabling the release upgrader"

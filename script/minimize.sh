@@ -27,12 +27,12 @@ apt-get -y purge accountsservice bind9-host command-not-found command-not-found-
 apt-get -y autoremove --purge
 
 # Clean up orphaned packages with deborphan
-apt-get -y install deborphan
+apt-get -y install --no-install-recommends deborphan
 deborphan --find-config | xargs apt-get -y purge
 while [ -n "$(deborphan --guess-all)" ]; do
     deborphan --guess-all | xargs apt-get -y purge
 done
-apt-get -y purge deborphan dialog
+apt-get -y purge deborphan
 
 # Clean up the apt cache
 apt-get -y autoremove --purge
