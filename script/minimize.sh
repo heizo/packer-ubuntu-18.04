@@ -19,11 +19,12 @@ dpkg --list | awk '{print $2}' | grep -- '-doc$' | xargs apt-get -y purge
 echo "==> Removing X11 libraries"
 apt-get -y purge libx11-data xauth libxmuu1 libxcb1 libx11-6 libxext6 libxau6 libxdmcp6
 echo "==> Removing other oddities"
-apt-get -y purge accountsservice bind9-host command-not-found command-not-found-data \
-    dosfstools friendly-recovery geoip-database hdparm info install-info installation-report \
-    iso-codes language-selector-common laptop-detect lshw mlocate mtr-tiny nano ntfs-3g os-prober \
-    parted pciutils plymouth popularity-contest publicsuffix shared-mime-info tasksel tcpdump \
-    ufw ureadahead usbutils xdg-user-dirs
+apt-get -y purge accountsservice bind9-host busybox-static command-not-found command-not-found-data \
+    dmidecode dosfstools friendly-recovery geoip-database hdparm info install-info installation-report \
+    iso-codes krb5-locales language-selector-common laptop-detect lshw mlocate mtr-tiny nano \
+    ncurses-term nplan ntfs-3g os-prober parted pciutils plymouth popularity-contest powermgmt-base \
+    publicsuffix python-apt-common shared-mime-info ssh-import-id \
+    tasksel tcpdump ufw ureadahead usbutils uuid-runtime xdg-user-dirs
 apt-get -y autoremove --purge
 
 # Clean up orphaned packages with deborphan
