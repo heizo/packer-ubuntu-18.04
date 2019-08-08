@@ -41,6 +41,7 @@
             ["modifyvm", "{{.Name}}", "--usb", "off"],
             ["modifyvm", "{{.Name}}", "--vram", "12"],
             ["modifyvm", "{{.Name}}", "--vrde", "off"],
+            ["modifyvm", "{{.Name}}", "--nictype1", "virtio"],
             ["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
             ["modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}"]
         ],
