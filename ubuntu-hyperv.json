@@ -15,7 +15,7 @@
       "iso_url": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-amd64.iso",
       "memory": "1024",
       "no_proxy": "{{env `no_proxy`}}",
-      "preseed": "preseed.cfg",
+      "preseed": "preseed-hyperv.cfg",
       "ssh_fullname": "vagrant",
       "ssh_password": "vagrant",
       "ssh_username": "vagrant",
