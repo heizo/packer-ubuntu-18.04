@@ -38,6 +38,10 @@ if [ "x${swapuuid}" != "x" ]; then
 fi
 
 # Zero out the free space to save space in the final image
+if [ -d /boot/efi ]; then
+    dd if=/dev/zero of=/boot/efi/EMPTY bs=1M || echo "dd exit code $? is suppressed"
+    rm -f /boot/efi/EMPTY
+fi
 dd if=/dev/zero of=/EMPTY bs=1M || echo "dd exit code $? is suppressed"
 rm -f /EMPTY
 sync
