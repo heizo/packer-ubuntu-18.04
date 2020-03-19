@@ -7,11 +7,11 @@ A packer template to create Ubuntu 18.04 "Bionic Beaver" Server boxes for vagran
 ### USAGE
 To create VirtualBox virtual machine.
 ```sh
-    $ packer build ubuntu.json
+    packer build ubuntu.json
 ```
 To create Hyper-V virtual machine.
 ```sh
-    $ packer build ubuntu-hyperv.json
+    packer build ubuntu-hyperv.json
 ```
 
 ### Ubuntu 18.04.4
