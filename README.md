@@ -15,7 +15,7 @@ To create Hyper-V virtual machine.
 ```
 
 ### Ubuntu 18.04.4
-Tested with [packer][] 1.5.4, [Vagrant][] 2.2.7, [VirtualBox][] 6.0.18
+Tested with [packer][] 1.6.0, [Vagrant][] 2.2.7, [VirtualBox][] 6.0.18
 
 [Packer]: https://packer.io/
 [Vagrant]: https://www.vagrantup.com/
