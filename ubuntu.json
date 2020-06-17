@@ -2,7 +2,7 @@
     "_comment": "Build with `packer build ubuntu.json`",
     "builders": [{
         "boot_command": [
-            "{{user `boot_command_prefix`}}",
+            "<esc><esc><enter><wait>",
             "/install/vmlinuz noapic ",
             "initrd=/install/initrd.gz ",
             "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/{{user `preseed`}} ",
@@ -77,7 +77,6 @@
         "type": "shell"
     }],
     "variables": {
-        "boot_command_prefix": "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
         "cpus": "1",
         "disable_ipv6": "true",
         "disk_size": "40960",
