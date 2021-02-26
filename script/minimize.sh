@@ -11,7 +11,7 @@ update-locale LANG=$LANG LC_ALL=$LC_ALL
 
 # Remove some packages to get a minimal install
 echo "==> Removing all linux kernels except the currrent one"
-dpkg --list 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs apt-get -y purge
+dpkg --list 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ :]*\).*/\1/;/[0-9]/!d' | xargs apt-get -y purge
 echo "==> Removing linux source"
 dpkg --list | awk '{print $2}' | grep linux-source | xargs apt-get -y purge
 echo "==> Removing documentation"
